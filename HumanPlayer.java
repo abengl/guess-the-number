@@ -4,18 +4,20 @@ import java.util.Scanner;
  * Represents the human player
  */
 public class HumanPlayer extends Player {
+    Scanner input = new Scanner(System.in);
+
     public HumanPlayer(String name) {
         super(name);
     }
 
     // Returns the player's guess
     @Override
-    public int makeGuess(Scanner scanner) {
+    public int makeGuess() {
         System.out.println("Enter your guess: ");
         int guess = 0;
         boolean validInput = false;
         while (!validInput) {
-            guess = scanner.nextInt();
+            guess = input.nextInt();
             if (guess >= 1 && guess <= 100) {
 //                System.out.println("Nice selection: " + guess);
                 validInput = true;
