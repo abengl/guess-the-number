@@ -1,15 +1,31 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
- * Propósito: Representa a una jugadora genérica. Es una clase abstracta. Define los atributos y métodos que todas
- * las clases de jugadoras deben compartir:
- * <p>
- * Atributos:
- * name: El nombre de la jugadora.
- * guesses: El historial de suposiciones de la jugadora.
- * <p>
- * Métodos:
- * makeGuess(): Devuelve la suposición de la jugadora. Es un método abstracto.
- * getName(): Devuelve el nombre de la jugadora.
- * getGuesses(): Devuelve el historial de suposiciones de la jugadora.
+ * Represents a generic player. It is an abstract class.
+ * Defines the attributes and methods that all player classes must share
  */
-public class Player {
+public abstract class Player {
+    // The name of the player
+    private final String name;
+    // The player's guess history
+    protected ArrayList<Integer> guesses;
+
+    public Player(String name) {
+        this.name = name;
+        this.guesses = new ArrayList<Integer>();
+    }
+
+    // Returns the player's guess. It is an abstract method
+    public abstract int makeGuess(Scanner scanner);
+
+    // Returns the player's name
+    public String getName() {
+        return this.name;
+    }
+
+    // Returns the player's guess history
+    public ArrayList<Integer> getGuess() {
+        return this.guesses;
+    }
 }
