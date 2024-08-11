@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Represents a generic player. It is an abstract class.
@@ -17,7 +16,7 @@ public abstract class Player {
     }
 
     // Returns the player's guess. It is an abstract method
-    public abstract int makeGuess(Scanner scanner);
+    public abstract int makeGuess();
 
     // Returns the player's name
     public String getName() {
