@@ -9,17 +9,16 @@ public class GuessTheNumberGame {
     public static void main(String[] args) {
         System.out.println("*** Welcome to the game Guess The Number! ***");
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("What is your name? ");
-        String name = sc.nextLine();
+        String username = scanner.nextLine();
 
-        HumanPlayer player1 = new HumanPlayer(name);
+        HumanPlayer player1 = new HumanPlayer(username, scanner);
         ComputerPlayer player2 = new ComputerPlayer();
 
         Random random = new Random();   // Random number generator
         int targetNumber = random.nextInt(100) + 1;     //Random number between 1-100
 
-        boolean gameOver = false;
         while (true) {
             if (checkGuess(player1, targetNumber)) {
                 gameSummary(player1);
@@ -29,6 +28,7 @@ public class GuessTheNumberGame {
                 break;
             }
         }
+        scanner.close();
     }
 
     public static void gameSummary(Player player) {
