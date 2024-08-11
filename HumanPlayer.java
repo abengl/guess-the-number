@@ -1,14 +1,29 @@
+import java.util.Scanner;
+
 /**
- * HumanPlayer y ComputerPlayer (heredan de Player)
- * Propósito: Representa a las jugadoras Humana y Computadora, respectivamente.
- * <p>
- * Métodos:
- * makeGuess(): Método que cada clase que hereda de Player debe implementar.
- * <p>
- * Relaciones:
- * La clase GuessTheNumberGame interactúa con las clases HumanPlayer y ComputerPlayer para gestionar el juego.
- * Tanto la clase HumanPlayer como ComputerPlayer son subclases de Player, lo que implica que heredan todas sus
- * propiedades y métodos, pero también tienen algunas características adicionales propias.
+ * Represents the human player
  */
-public class HumanPlayer {
+public class HumanPlayer extends Player {
+    public HumanPlayer(String name) {
+        super(name);
+    }
+
+    // Returns the player's guess
+    @Override
+    public int makeGuess(Scanner scanner) {
+        System.out.println("Enter your guess: ");
+        int guess = 0;
+        boolean validInput = false;
+        while (!validInput) {
+            guess = scanner.nextInt();
+            if (guess >= 1 && guess <= 100) {
+//                System.out.println("Nice selection: " + guess);
+                validInput = true;
+            } else {
+                System.out.println("You are out of range. Please enter a number between 1 and 100.");
+            }
+        }
+        guesses.add(guess);
+        return guess;
+    }
 }
