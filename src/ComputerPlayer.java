@@ -1,7 +1,9 @@
+package src;
+
 import java.util.Random;
 
 /**
- * Represents a Computer Player
+ * Represents a Computer src.Player
  */
 public class ComputerPlayer extends Player {
     private static final Random computerRandom = new Random();
