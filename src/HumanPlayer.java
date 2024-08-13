@@ -1,5 +1,3 @@
-package src;
-
 import java.util.Scanner;
 
 /**
@@ -8,6 +6,7 @@ import java.util.Scanner;
 public class HumanPlayer extends Player {
     Scanner input;
 
+    // Constructor
     public HumanPlayer(String name, Scanner input) {
         super(name);
         this.input = input;

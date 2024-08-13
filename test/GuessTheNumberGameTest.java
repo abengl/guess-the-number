@@ -1,7 +1,4 @@
-package test;
-
 import org.junit.jupiter.api.Test;
-import src.HumanPlayer;
 
 import java.util.Scanner;
 

@@ -1,5 +1,3 @@
-package src;
-
 import java.util.ArrayList;
 
 /**
@@ -17,7 +15,7 @@ public abstract class Player {
         this.guesses = new ArrayList<Integer>();
     }
 
-    // Returns the player's guess. It is an abstract method
+    // Returns the player's guess
     public abstract int makeGuess();
 
     // Returns the player's name

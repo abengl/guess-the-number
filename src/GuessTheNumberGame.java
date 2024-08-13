@@ -1,5 +1,3 @@
-package src;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -34,7 +32,7 @@ public class GuessTheNumberGame {
     }
 
     public static void gameSummary(Player player) {
-        System.out.println("Congratulations, " + player.getName() + "! You guessed the number.");
+        System.out.println("\nCongratulations, " + player.getName() + "! You guessed the number.");
         System.out.println("Attempts: " + player.getGuess());
         System.out.println("Total attempts: " + player.getGuess().size());
     }
@@ -44,10 +42,10 @@ public class GuessTheNumberGame {
         System.out.println("-- Player: " + player.getName() + " ---");
         int guess = player.makeGuess();
         if (guess > targetNumber) {
-            System.out.println("Too high!");
+            System.out.println("Too high!\n");
             return false;
         } else if (guess < targetNumber) {
-            System.out.println("To low!");
+            System.out.println("To low!\n");
             return false;
         } else {
             return true;
