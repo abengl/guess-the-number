@@ -25,4 +25,8 @@ public abstract class Player {
     public ArrayList<Integer> getGuess() {
         return this.guesses;
     }
+
+    public void resetGuesses() {
+        this.guesses.clear();
+    }
 }

@@ -21,6 +21,7 @@ public class HumanPlayer extends Player {
         while (true) {
             try {
                 guess = input.nextInt();
+                input.nextLine(); //Limpiamos el scanner
                 if (guess >= 1 && guess <= 100) break;
                 else System.out.println("You are out of range. Please enter a number between 1 and 100.");
             } catch (InputMismatchException e) {
