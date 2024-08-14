@@ -1,54 +1,60 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.Mockito;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.spy;
 
-@ExtendWith(MockitoExtension.class)
 class ComputerPlayerTest {
-
-    @InjectMocks
-    private ComputerPlayer playerMock;
-
-    @Mock
+    private ComputerPlayer computerPlayerSpy;
     private Random randomMock;
 
     @BeforeEach
     void setUp() {
-        playerMock = new ComputerPlayer();
+        randomMock = Mockito.mock(Random.class);
+        computerPlayerSpy = spy(new ComputerPlayer());
+    }
+
+    @AfterEach
+    void tearDown() {
     }
 
     @Test
-    @DisplayName("Test ComputerPlayer - getName()")
-    void getNameTest() {
-        assertEquals("Computer", playerMock.getName());
+    @DisplayName("Test computerPlayer - getName()")
+    void getName() {
+        assertEquals("Computer", computerPlayerSpy.getName());
+    }
+
+    @Test
+    @DisplayName("Test computerPlayer - randomNumber")
+    void randomNumber() {
+        Mockito.when(randomMock.nextInt(100)).thenReturn(80);
+        assertEquals(81, ComputerPlayer.randomNumber(randomMock));
     }
 
     @Test
     @DisplayName("Test ComputerPlayer - getGuess()")
-    void getGuessInitialTest() {
-        assertTrue(playerMock.getGuess().isEmpty(), "The computer player's guess history should be empty");
+    void getGuess() {
+        Mockito.when(ComputerPlayer.randomNumber(Mockito.any())).thenReturn(80);
+        computerPlayerSpy.makeGuess();
+        ArrayList<Integer> expectedGuess = new ArrayList<>();
+        expectedGuess.add(81);
+
+        assertEquals(expectedGuess, computerPlayerSpy.getGuess());
+
     }
 
     @Test
-    @DisplayName("Test ComputerPlayer - getGuess() with Mocked Random")
-    void randomNumberTest() {
-        when(randomMock.nextInt(100)).thenReturn(49);
-
-        // This uses the randomMock to generate the guess
-        int guess = ComputerPlayer.randomNumber(randomMock);
-        assertEquals(50, guess, "The guessed number should be 50");
-
-        // Simulate adding the guess to the list (since makeGuess uses a different random instance)
-        playerMock.getGuess().add(guess);
-        assertTrue(playerMock.getGuess().contains(50), "The guesses list should contain the number 50");
+    @DisplayName("Test ComputerPlayer - makeGuess")
+    void makeGuess() {
+        Mockito.when(randomMock.nextInt()).thenReturn(90);
+        ComputerPlayer.randomNumber(randomMock);
+        assertEquals(91, computerPlayerSpy.makeGuess());
     }
+
 }

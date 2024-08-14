@@ -5,9 +5,7 @@ import java.util.ArrayList;
  * Defines the attributes and methods that all player classes must share
  */
 public abstract class Player {
-    // The name of the player
     private final String name;
-    // The player's guess history
     protected ArrayList<Integer> guesses;
 
     public Player(String name) {
