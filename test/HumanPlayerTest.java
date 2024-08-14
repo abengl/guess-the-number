@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.spy;
 
 class HumanPlayerTest {
-    // Stream para capturar la salida de System.out
+    // Stream to capture System.out output
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
     private Scanner scannerMock;
@@ -25,10 +25,10 @@ class HumanPlayerTest {
     void setUp() {
         scannerMock = Mockito.mock(Scanner.class);
         Mockito.when(scannerMock.nextLine()).thenReturn("player1");
+
         humanPlayerSpy = spy(new HumanPlayer(scannerMock.nextLine(), scannerMock));
 
-        // Redirigimos el System.out a nuestro stream
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent)); // Redirect System.out to our stream
     }
 
     @AfterEach
@@ -49,7 +49,7 @@ class HumanPlayerTest {
         Mockito.when(scannerMock.nextInt()).thenReturn(30);
 
         humanPlayerSpy.makeGuess();
-        
+
         ArrayList<Integer> expectedGuess = new ArrayList<Integer>();
         expectedGuess.add(30);
 
@@ -67,17 +67,16 @@ class HumanPlayerTest {
     @DisplayName("Test HumanPlayer - makeGuess")
     void makeGuessHumanTestWithNumberOutOfRange() {
         Mockito.when(scannerMock.nextInt())
-                .thenReturn(200)    // Primera llamada retorna un número fuera de rango
-                .thenReturn(20);  // Segunda llamada devuelve un número válido para salir del loop
-        // del try
+                .thenReturn(200)    // First called outside range
+                .thenReturn(20);  // Second call with valid input to end try loop
 
-        int result = humanPlayerSpy.makeGuess(); // Guarda el resultado del segundo intento
+        int result = humanPlayerSpy.makeGuess(); // Stores the second attempt result
 
-        // Verificar que se imprimió el mensaje esperado
+        // Validate that the corresponding message is printed
         String expectedOutput = "You are out of range. Please enter a number between 1 and 100.";
         assertTrue(outContent.toString().contains(expectedOutput));
 
-        // Verificar que la apuesta es válida en el segundo intento
+        // Validate second guess accuracy
         assertEquals(20, result);
     }
 
@@ -85,16 +84,16 @@ class HumanPlayerTest {
     @DisplayName("Test HumanPlayer - makeGuess")
     void makeGuessHumanTestWithInvalidInput() {
         Mockito.when(scannerMock.nextInt())
-                .thenThrow(new InputMismatchException())  // Primera llamada lanza excepción
-                .thenReturn(50);  // Segunda llamada devuelve un número válido
+                .thenThrow(new InputMismatchException())  // First call throws exception
+                .thenReturn(50);  // Second call with valid input to end try loop
 
-        int result = humanPlayerSpy.makeGuess();    // Guarda el resultado del segundo intento
+        int result = humanPlayerSpy.makeGuess();    // Stores the second attempt result
 
-        // Verificar que se imprimió el mensaje esperado
+        // Validate that the corresponding message is printed
         String expectedOutput = "Invalid input. Please enter a numeric value.";
         assertTrue(outContent.toString().contains(expectedOutput));
 
-        // Verificar que la apuesta es válida en el segundo intento
+        // Validate second guess accuracy
         assertEquals(50, result);
     }
 
@@ -124,6 +123,5 @@ class HumanPlayerTest {
 
         assertEquals(expectedGuesses, humanPlayerSpy.getGuess());
     }
-
 
 }

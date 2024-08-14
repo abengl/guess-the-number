@@ -35,7 +35,7 @@ public class GuessTheNumberGame {
         scanner.close();
     }
 
-    private static HumanPlayer createHumanPlayer(Scanner scanner) {
+    protected static HumanPlayer createHumanPlayer(Scanner scanner) {
         System.out.println("*** Welcome to the game Guess The Number! ***");
         System.out.println("What is your name? ");
         String username = scanner.nextLine();
@@ -92,14 +92,14 @@ public class GuessTheNumberGame {
         return answer.equals("yes") || answer.equals("y");
     }
 
-    private void resetGame() {
+    protected void resetGame() {
         this.targetNumber = generateTargetNumber();
         player1.resetGuesses();
         player2.resetGuesses();
         System.out.println("\n** Starting a new round... **\n");
     }
 
-    private int generateTargetNumber() {
+    protected int generateTargetNumber() {
         return random.nextInt(MAX_NUMBER) + 1;
     }
 }
