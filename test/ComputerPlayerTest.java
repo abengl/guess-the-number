@@ -17,7 +17,7 @@ class ComputerPlayerTest {
     @BeforeEach
     void setUp() {
         randomMock = Mockito.mock(Random.class);
-        computerPlayerSpy = spy(new ComputerPlayer());
+        computerPlayerSpy = spy(new ComputerPlayer(randomMock));
     }
 
     @AfterEach
@@ -40,8 +40,11 @@ class ComputerPlayerTest {
     @Test
     @DisplayName("Test ComputerPlayer - getGuess()")
     void getGuess() {
-        Mockito.when(ComputerPlayer.randomNumber(Mockito.any())).thenReturn(80);
+        Mockito.when(randomMock.nextInt(100)).thenReturn(80);
+        ComputerPlayer.randomNumber(randomMock);
+
         computerPlayerSpy.makeGuess();
+
         ArrayList<Integer> expectedGuess = new ArrayList<>();
         expectedGuess.add(81);
 
@@ -52,9 +55,10 @@ class ComputerPlayerTest {
     @Test
     @DisplayName("Test ComputerPlayer - makeGuess")
     void makeGuess() {
-        Mockito.when(randomMock.nextInt()).thenReturn(90);
+        Mockito.when(randomMock.nextInt(100)).thenReturn(80);
         ComputerPlayer.randomNumber(randomMock);
-        assertEquals(91, computerPlayerSpy.makeGuess());
+        int guess = computerPlayerSpy.makeGuess();
+        assertEquals(81, guess);
     }
 
 }

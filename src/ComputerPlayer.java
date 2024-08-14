@@ -4,10 +4,11 @@ import java.util.Random;
  * Represents a Computer src.Player
  */
 public class ComputerPlayer extends Player {
-    private final Random computerRandom = new Random();
+    private final Random computerRandom;
 
-    public ComputerPlayer() {
+    public ComputerPlayer(Random computerRandom) {
         super("Computer");
+        this.computerRandom = computerRandom;
     }
 
     public static int randomNumber(Random random) {

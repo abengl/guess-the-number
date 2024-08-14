@@ -26,9 +26,9 @@ public class GuessTheNumberGame {
         System.out.println("What is your name? ");
         String username = scanner.nextLine();
 
-        HumanPlayer player1 = new HumanPlayer(username, scanner);
-        ComputerPlayer player2 = new ComputerPlayer();
         Random random = new Random();
+        HumanPlayer player1 = new HumanPlayer(username, scanner);
+        ComputerPlayer player2 = new ComputerPlayer(random);
 
         GuessTheNumberGame game = new GuessTheNumberGame(player1, player2, random, scanner);
 
