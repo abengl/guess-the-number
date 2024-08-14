@@ -19,6 +19,7 @@ public class GuessTheNumberGame {
         this.scanner = scanner;
     }
 
+    //Implementar quit or continue
     public static void main(String[] args) {
         System.out.println("*** Welcome to the game Guess The Number! ***");
 
