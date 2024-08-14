@@ -45,9 +45,11 @@ class HumanPlayerTest {
 
     @Test
     @DisplayName("Test Player - getGuess()")
-    void getGuessTest() {
+    void getGuessHumanTest() {
         Mockito.when(scannerMock.nextInt()).thenReturn(30);
+
         humanPlayerSpy.makeGuess();
+        
         ArrayList<Integer> expectedGuess = new ArrayList<Integer>();
         expectedGuess.add(30);
 
@@ -56,14 +58,14 @@ class HumanPlayerTest {
 
     @Test
     @DisplayName("Test HumanPlayer - makeGuess")
-    void makeGuessTestWithValidInput() {
+    void makeGuessHumanTestWithValidInput() {
         Mockito.when(scannerMock.nextInt()).thenReturn(20);
         assertEquals(20, humanPlayerSpy.makeGuess());
     }
 
     @Test
     @DisplayName("Test HumanPlayer - makeGuess")
-    void makeGuessTestWithNumberOutOfRange() {
+    void makeGuessHumanTestWithNumberOutOfRange() {
         Mockito.when(scannerMock.nextInt())
                 .thenReturn(200)    // Primera llamada retorna un número fuera de rango
                 .thenReturn(20);  // Segunda llamada devuelve un número válido para salir del loop
@@ -81,7 +83,7 @@ class HumanPlayerTest {
 
     @Test
     @DisplayName("Test HumanPlayer - makeGuess")
-    void makeGuessTestWithInvalidInput() {
+    void makeGuessHumanTestWithInvalidInput() {
         Mockito.when(scannerMock.nextInt())
                 .thenThrow(new InputMismatchException())  // Primera llamada lanza excepción
                 .thenReturn(50);  // Segunda llamada devuelve un número válido
@@ -98,9 +100,30 @@ class HumanPlayerTest {
 
     @Test
     @DisplayName("Test Player - resetGuesses")
-    void resetGuessesTest() {
+    void resetGuessesHumanTest() {
         humanPlayerSpy.resetGuesses();
         assertTrue(humanPlayerSpy.getGuess().isEmpty());
     }
+
+    @Test
+    @DisplayName("Test HumanPlayer - multiple guesses")
+    void makeMultipleGuessesHumanTest() {
+        Mockito.when(scannerMock.nextInt())
+                .thenReturn(1)
+                .thenReturn(50)
+                .thenReturn(100);
+
+        assertEquals(1, humanPlayerSpy.makeGuess());
+        assertEquals(50, humanPlayerSpy.makeGuess());
+        assertEquals(100, humanPlayerSpy.makeGuess());
+
+        ArrayList<Integer> expectedGuesses = new ArrayList<>();
+        expectedGuesses.add(1);
+        expectedGuesses.add(50);
+        expectedGuesses.add(100);
+
+        assertEquals(expectedGuesses, humanPlayerSpy.getGuess());
+    }
+
 
 }

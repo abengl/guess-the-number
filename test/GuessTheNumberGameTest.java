@@ -24,11 +24,8 @@ class GuessTheNumberGameTest {
         Mockito.when(randomMock.nextInt(100)).thenReturn(50);
 
         scannerMock = Mockito.mock(Scanner.class);
-
         playerMock = Mockito.mock(HumanPlayer.class);
-
         computerMock = Mockito.mock(ComputerPlayer.class);
-
         gameSpy = spy(new GuessTheNumberGame(playerMock, computerMock, randomMock, scannerMock));
     }
 
