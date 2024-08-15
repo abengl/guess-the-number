@@ -21,6 +21,8 @@
 - Al _final_, se muestra un mensaje de conclusión y una lista de todas las tentativas realizadas por el jugador ganador.
 - El juego tiene la opción de _continuar_ con una nueva ronda o _terminar_ la sesión.
 
+<img src="./src/assets/guess.gif">
+
 ## 2. Ejecutar el Código
 
 Clona el repositorio, luego navega al directorio del proyecto y compila el código utilizando un compilador de Java.
