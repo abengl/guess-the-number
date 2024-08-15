@@ -10,7 +10,7 @@
 
 ## 1. Resumen del Proyecto
 
-**Guess The Number** es un juego interactivo desarrollado para ejecutarse en la terminal. Durante el juego:
+**Guess The Number** ❓ es un juego interactivo desarrollado para ejecutarse en la terminal. Durante el juego:
 
 - El usuario y el ordenador se turnan para intentar adivinar el número.
 - Después de cada intento, se muestra:
@@ -21,12 +21,12 @@
 - Al _final_, se muestra un mensaje de conclusión y una lista de todas las tentativas realizadas por el jugador ganador.
 - El juego tiene la opción de _continuar_ con una nueva ronda o _terminar_ la sesión.
 
-<img src="./src/assets/guess.gif">
+<img src="./src/assets/guess.gif" width="400"/>
 
 ## 2. Ejecutar el Código
 
 Clona el repositorio, luego navega al directorio del proyecto y compila el código utilizando un compilador de Java.
-Luego, ejecuta el archivo principal.
+Luego, ejecuta el archivo principal 👩‍💻.
 
 ```bash
 git clone https://github.com/abengl/guess-the-number.git
@@ -54,7 +54,7 @@ Este proyecto fue desarrollado teniendo en cuenta las siguientes historias de us
 
 ## 4. Testing
 
-El proyecto incluye tests que cubren las principales funcionalidades del juego. Las pruebas están diseñadas para
+El proyecto incluye tests que cubren las principales funcionalidades del juego :octocat:. Las pruebas están diseñadas para
 verificar:
 
 - Adivinanzas correctas, muy altas y muy bajas.
@@ -64,6 +64,6 @@ verificar:
 
 ## 5. Lenguajes y Frameworks
 
-- **Java**: Lenguaje de programación principal.
+- **Java**: Lenguaje de programación principal ☕.
 - **JUnit**: Framework para pruebas unitarias.
 - **Mockito**: Framework para la creación de mocks en los tests.
